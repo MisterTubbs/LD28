@@ -8,8 +8,9 @@ public class Constants {
 	
 	public static int WIDTH = 1280;
 	public static int HEIGHT = 720;
-	public static final int TILE_SIZE = 64;
+	public static final int TILE_SIZE = 48;
 	
-	public static float PLAYER_SPEED = 8;
-
+	public static float PLAYER_SPEED = 6;
+	
+	public static boolean debug = false;
 }

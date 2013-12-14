@@ -1,7 +1,7 @@
 package com.nishu.ld28.game;
 
 import com.nishu.ld28.game.level.Level;
-import com.nishu.ld28.game.level.TestLevel;
+import com.nishu.ld28.game.level.RandomLevel;
 
 public class World {
 
@@ -16,7 +16,7 @@ public class World {
 	}
 
 	private void init() {
-		level = new TestLevel();
+		level = new RandomLevel();
 	}
 
 	public void update() {

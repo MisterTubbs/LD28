@@ -10,9 +10,6 @@ public class Level {
 	public byte[][] tiles;
 	public Player player;
 	
-	private float ox, oy;
-	private float dx, dy;
-	
 	private int mapHandle;
 	
 	public Level(){
@@ -32,30 +29,21 @@ public class Level {
 		glEndList();
 		
 		player = new Player(Constants.WIDTH / 2, Constants.HEIGHT / 2);
-		ox = player.getX();
-		oy = player.getY();
 	}
 	
 	public void createWorld() {
 	}
 
 	public void update(){
-		player.update();
-		dx = player.getX() - ox;
-		dy = player.getY() - oy;
-		System.out.println(Constants.WIDTH + dx);
-		if(player.getX() > (Constants.WIDTH) + dx) {
-		}
-		if(player.getX() < (0 + Constants.TILE_SIZE) - dx) {
-		}
+		player.update(this);
 	}
 
 	public void render(){
-		glTranslatef(dx, dy, 0);
 		glCallList(mapHandle);
 		player.render();
 	}
 
 	public void dispose(){
+		glDeleteLists(mapHandle, 1);
 	}
 }

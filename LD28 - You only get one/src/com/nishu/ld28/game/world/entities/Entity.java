@@ -1,23 +1,40 @@
 package com.nishu.ld28.game.world.entities;
 
+import static org.lwjgl.opengl.GL11.GL_LINES;
+import static org.lwjgl.opengl.GL11.GL_QUADS;
+import static org.lwjgl.opengl.GL11.glBegin;
+import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glVertex2f;
+
+import com.nishu.ld28.game.level.Level;
+import com.nishu.ld28.game.world.entities.animation.Sprite;
+import com.nishu.ld28.utilities.Constants;
 import com.nishu.ld28.utilities.Shape;
 import com.nishu.utils.Vector2f;
-
-import static org.lwjgl.opengl.GL11.*;
 
 public class Entity {
 	
 	private Vector2f pos;
+	private Sprite currentSprite;
 	private boolean isDead;
 	private int health;
 	
-	public Entity(float x, float y, int health){
-		this(new Vector2f(x, y), health);
+	public Entity(float x, float y, Sprite currentSprite, int health){
+		this(new Vector2f(x, y), currentSprite, health);
 	}
 
-	public Entity(Vector2f pos, int health){
+	public Entity(Vector2f pos, Sprite currentSprite, int health){
 		this.pos = pos;
+		this.currentSprite = currentSprite;
 		this.health = health;
+	}
+	
+	public Sprite getSprite(){
+		return currentSprite;
+	}
+	
+	public void setSprite(Sprite sprite){
+		this.currentSprite = sprite;
 	}
 
 	public Vector2f getPos(){
@@ -56,7 +73,7 @@ public class Entity {
 		this.health = health;
 	}
 
-	public void update(){
+	public void update(Level level){
 		if(health <= 0) isDead = true;
 	}
 	
@@ -65,8 +82,23 @@ public class Entity {
 	}
 	
 	public void render(){
+		if(Constants.debug){
+			glBegin(GL_LINES);
+			glVertex2f(getX(), getY());
+			glVertex2f(getX() + Constants.TILE_SIZE, getY());
+
+			glVertex2f(getX() + Constants.TILE_SIZE, getY());
+			glVertex2f(getX() + Constants.TILE_SIZE, getY() + Constants.TILE_SIZE);
+			
+			glVertex2f(getX() + Constants.TILE_SIZE, getY() + Constants.TILE_SIZE);
+			glVertex2f(getX(), getY() + Constants.TILE_SIZE);
+
+			glVertex2f(getX(), getY() + Constants.TILE_SIZE);
+			glVertex2f(getX(), getY());
+			glEnd();
+		}
 		glBegin(GL_QUADS);
-		Shape.createPlayer(pos.getX(), pos.getY());
+		Shape.createPlayer(pos.getX(), pos.getY(), currentSprite);
 		glEnd();
 	}
 

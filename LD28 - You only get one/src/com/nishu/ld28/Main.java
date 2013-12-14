@@ -1,12 +1,15 @@
 package com.nishu.ld28;
 
 import com.nishu.ld28.game.World;
+
 import com.nishu.ld28.utilities.Constants;
 import com.nishu.utils.Color4f;
 import com.nishu.utils.GameLoop;
 import com.nishu.utils.Screen;
 import com.nishu.utils.ScreenTools;
 import com.nishu.utils.Window;
+
+import static org.lwjgl.opengl.GL11.*;
 
 public class Main extends Screen {
 	
@@ -27,6 +30,8 @@ public class Main extends Screen {
 	@Override
 	public void initGL() {
 		ScreenTools.renderOrtho(0, Constants.WIDTH, 0, Constants.HEIGHT);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
 	@Override
@@ -42,8 +47,8 @@ public class Main extends Screen {
 
 	@Override
 	public void dispose() {
-		Window.dispose();
 		game.dispose();
+		Window.dispose();
 	}
 	
 	public static void main(String[] args){
