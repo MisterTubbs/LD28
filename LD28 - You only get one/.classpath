@@ -10,5 +10,9 @@
 	<classpathentry kind="lib" path="C:/Users/Toby/Programming/lwjgl-2.9.0/lwjgl-2.9.0/jar/lwjgl_util.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Toby/Programming/libraries/GLUtils.jar"/>
 	<classpathentry kind="lib" path="res"/>
+	<classpathentry kind="lib" path="C:/Users/Toby/Programming/libraries/tinysound-1.1.1/tinysound-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Toby/Programming/libraries/tinysound-1.1.1/lib/jorbis-0.0.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Toby/Programming/libraries/tinysound-1.1.1/lib/tritonus_share.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Toby/Programming/libraries/tinysound-1.1.1/lib/vorbisspi1.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

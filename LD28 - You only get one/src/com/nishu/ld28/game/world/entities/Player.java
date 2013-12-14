@@ -2,17 +2,22 @@ package com.nishu.ld28.game.world.entities;
 
 import org.lwjgl.input.Keyboard;
 
+import com.nishu.ld28.Main;
 import com.nishu.ld28.game.level.Level;
 import com.nishu.ld28.game.world.entities.animation.Sprite;
 import com.nishu.ld28.utilities.Constants;
 
 public class Player extends Entity{
 	
-	public Player(float x, float y) {
-		super(x, y, Sprite.player_forward, 100);
+	public Player(Level level, float x, float y) {
+		super(level, x, y, Sprite.player_forward, 500);
 	}
 	
-	public void update(Level level){
+	public void update(){
+		if(health <= 0) {
+			isDead = true;
+			Main.state = Main.MENUSTATE.DEATH;
+		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)){
 			move(0, Constants.PLAYER_SPEED);
 			setSprite(Sprite.player_forward);

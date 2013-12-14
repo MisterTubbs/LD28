@@ -28,4 +28,26 @@ public class Shape {
 		glTexCoord2f(s.x, s.y + Spritesheet.tiles.uniformSize());		
 		glVertex2f(x, y + Constants.TILE_SIZE);
 	}
+	
+	public static void createBloodSplatter(float x, float y){
+		glTexCoord2f(Sprite.zblood_splatter.x, Sprite.zblood_splatter.y);
+		glVertex2f(x, y);
+		glTexCoord2f(Sprite.zblood_splatter.x + Spritesheet.tiles.uniformSize(), Sprite.zblood_splatter.y);		
+		glVertex2f(x + Constants.SPLATTER_SIZE, y);
+		glTexCoord2f(Sprite.zblood_splatter.x + Spritesheet.tiles.uniformSize(), Sprite.zblood_splatter.y + Spritesheet.tiles.uniformSize());		
+		glVertex2f(x + Constants.SPLATTER_SIZE, y + Constants.SPLATTER_SIZE);
+		glTexCoord2f(Sprite.zblood_splatter.x, Sprite.zblood_splatter.y + Spritesheet.tiles.uniformSize());		
+		glVertex2f(x, y + Constants.SPLATTER_SIZE);
+	}
+	
+	public static void createPlayerBloodSplatter(float x, float y){
+		glTexCoord2f(Sprite.pblood_splatter.x, Sprite.pblood_splatter.y);
+		glVertex2f(x, y);
+		glTexCoord2f(Sprite.pblood_splatter.x + Spritesheet.tiles.uniformSize(), Sprite.pblood_splatter.y);		
+		glVertex2f(x + Constants.SPLATTER_SIZE, y);
+		glTexCoord2f(Sprite.pblood_splatter.x + Spritesheet.tiles.uniformSize(), Sprite.pblood_splatter.y + Spritesheet.tiles.uniformSize());		
+		glVertex2f(x + Constants.SPLATTER_SIZE, y + Constants.SPLATTER_SIZE);
+		glTexCoord2f(Sprite.pblood_splatter.x, Sprite.pblood_splatter.y + Spritesheet.tiles.uniformSize());		
+		glVertex2f(x, y + Constants.SPLATTER_SIZE);
+	}
 }

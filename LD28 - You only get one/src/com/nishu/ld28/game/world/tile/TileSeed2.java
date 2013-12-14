@@ -16,7 +16,6 @@ public class TileSeed2 extends Tile{
 
 	@Override
 	public byte getID() {
-		// TODO Auto-generated method stub
 		return 4;
 	}
 

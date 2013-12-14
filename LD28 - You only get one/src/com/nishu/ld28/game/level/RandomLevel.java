@@ -1,11 +1,30 @@
 package com.nishu.ld28.game.level;
 
+import static org.lwjgl.opengl.GL11.GL_COMPILE;
+import static org.lwjgl.opengl.GL11.GL_QUADS;
+import static org.lwjgl.opengl.GL11.glBegin;
+import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glEndList;
+import static org.lwjgl.opengl.GL11.glNewList;
+
 import com.nishu.ld28.game.world.tile.Tile;
 import com.nishu.ld28.utilities.Constants;
 import com.nishu.ld28.utilities.Shape;
 import com.nishu.ld28.utilities.Spritesheet;
 
 public class RandomLevel extends Level{
+	
+	public void rebuild(){
+		glNewList(mapHandle, GL_COMPILE);
+		glBegin(GL_QUADS);
+		for(int x = 0; x < Constants.WIDTH / Constants.TILE_SIZE + 1; x++){
+			for(int y = 0; y < Constants.HEIGHT / Constants.TILE_SIZE + 1; y++){
+				Shape.createTile(x * Constants.TILE_SIZE, y * Constants.TILE_SIZE, Tile.getTile(tiles[x][y]).getTexCoords());
+			}
+		}
+		glEnd();
+		glEndList();
+	}
 	
 	public void createWorld(){
 		Spritesheet.tiles.bind();
